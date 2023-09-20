@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="9dp"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#FA3D5A">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TODAY'S"
+        android:fontFamily="@font/cdextrabold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        >
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEWS"
+        android:fontFamily="@font/cdextrabold"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_horizontal"
+        >
+
+    </TextView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:padding="10dp">
+
+
+        <Button
+            android:id="@+id/bsports"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="4dp"
+            android:text="Sports"
+            app:layout_constraintEnd_toStartOf="@+id/bmedia"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="#181F47"/>
+
+        <Button
+            android:id="@+id/bmedia"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="4dp"
+            android:text="Media"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bsports"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="#4CAF50"/>
+
+        <Button
+            android:id="@+id/bnational"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:text="National"
+            app:layout_constraintBottom_toTopOf="@+id/bpolitics"
+            app:layout_constraintEnd_toStartOf="@+id/binternational"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bsports"
+            app:layout_constraintVertical_bias="0.5"
+            android:backgroundTint="#0A60BC"/>
+
+        <Button
+            android:id="@+id/binternational"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:text="International"
+            app:layout_constraintBottom_toTopOf="@+id/ball"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bnational"
+            app:layout_constraintTop_toBottomOf="@+id/bmedia"
+            app:layout_constraintVertical_bias="0.5"
+            android:backgroundTint="#8BC34A"/>
+
+        <Button
+            android:id="@+id/bpolitics"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="16dp"
+            android:text="Politics"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ball"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="#83540F"/>
+
+        <Button
+            android:id="@+id/ball"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginBottom="16dp"
+            android:text="All"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/bpolitics"
+            android:backgroundTint="#4CAF50"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
