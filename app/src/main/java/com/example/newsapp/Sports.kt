@@ -34,7 +34,7 @@ class Sports : AppCompatActivity() {
                     "Once a player is in the sin-bin, the FPRO has up to eight minutes to review the decision at length to decide if the act of foul play warrants upgrading to a red card. If not, the player will return to the field after their 10 minutes in the sin-bin has elapsed"),
             News(R.drawable.img_1,"England and Scotland battle for Anderson | Clarke: 'He's got a choice to make'","Anderson's Newcastle team-mate, Barnes, is reported to be considering a switch of allegiance after playing once for England in a friendly win over Wales three years ago.\n" +
                     "\n" +
-                    "When asked about Barnes, Clarke said: \"Probably the same comment, to think about that after.\n" +
+                    "When asked about Barnes, Clarke said:Probably the same comment, to think about that after.\n" +
                     "\n" +
                     "\"We want the best players we can possibly get. If they are eligible for Scotland and they have a chance to play for us and they can improve the squad that I've got - which is not an easy thing to do...\n" +
                     "\n" +

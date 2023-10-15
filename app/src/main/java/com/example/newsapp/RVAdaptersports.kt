@@ -30,7 +30,6 @@ class RVAdaptersports(val context: Context,val newslist: List<News>): RecyclerVi
             val image = findViewById<ImageView>(R.id.image)
             val content = findViewById<TextView>(R.id.content)
 
-
             text.text = newslist[position].title
             image.setImageResource(newslist[position].image)
 
