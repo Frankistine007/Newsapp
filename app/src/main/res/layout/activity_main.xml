@@ -37,28 +37,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@color/white"
-        android:padding="10dp">
+        android:background="#EADFC0"
+        android:padding="10dp"
+        >
 
 
         <Button
             android:id="@+id/bsports"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="176dp"
+            android:layout_height="210dp"
             android:layout_marginTop="4dp"
-            android:text="Sports"
+            android:backgroundTint="#181F47"
+            android:fontFamily="@font/cdextrabold"
+            android:text="SPORTS"
+            android:textSize="16dp"
+            app:cornerRadius="15dp"
             app:layout_constraintEnd_toStartOf="@+id/bmedia"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="#181F47"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/bmedia"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="176dp"
+            android:layout_height="210dp"
             android:layout_marginTop="4dp"
-            android:text="Media"
+            android:fontFamily="@font/cdextrabold"
+            android:text="MEDIA"
+            android:textSize="16dp"
+            app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/bsports"
@@ -67,9 +74,12 @@
 
         <Button
             android:id="@+id/bnational"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:text="National"
+            android:layout_width="176dp"
+            android:layout_height="210dp"
+            android:fontFamily="@font/cdextrabold"
+            android:text="NATIONAL"
+            android:textSize="16dp"
+            app:cornerRadius="15dp"
             app:layout_constraintBottom_toTopOf="@+id/bpolitics"
             app:layout_constraintEnd_toStartOf="@+id/binternational"
             app:layout_constraintHorizontal_bias="0.5"
@@ -80,9 +90,12 @@
 
         <Button
             android:id="@+id/binternational"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:text="International"
+            android:layout_width="176dp"
+            android:layout_height="210dp"
+            android:fontFamily="@font/cdextrabold"
+            android:text="INTERNATIONAL"
+            android:textSize="16dp"
+            app:cornerRadius="15dp"
             app:layout_constraintBottom_toTopOf="@+id/ball"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -93,27 +106,33 @@
 
         <Button
             android:id="@+id/bpolitics"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="176dp"
+            android:layout_height="210dp"
             android:layout_marginBottom="16dp"
-            android:text="Politics"
+            android:backgroundTint="#83540F"
+            android:fontFamily="@font/cdextrabold"
+            android:text="POLITICS"
+            android:textSize="16dp"
+            app:cornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ball"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#83540F"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/ball"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="176dp"
+            android:layout_height="210dp"
             android:layout_marginBottom="16dp"
-            android:text="All"
+            android:fontFamily="@font/cdextrabold"
+            android:text="ALL"
+            android:textSize="16dp"
+            app:cornerRadius="15dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/bpolitics"
-            android:backgroundTint="#4CAF50"/>
+            android:backgroundTint="#B36C45"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
