@@ -1,9 +1,15 @@
 package com.example.newsapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class National : AppCompatActivity() {
 
@@ -12,106 +18,35 @@ class National : AppCompatActivity() {
         setContentView(R.layout.recyclerview)
 
         val recyclerView = findViewById<RecyclerView>(R.id.rvitems)
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val news_data = listOf(
 
-            News(R.drawable.img_20,"Mapping violence – from J&K to Northeast","NAGPUR: The country has never been as peaceful before and the credit goes to PM Narendra Modi’s government that has reduced violence by 80%, including terrorism in Kashmir, Maoist insurrection, and insurgency in the Northeast, Union home minister Amit Shah said Saturday in a riposte to the opposition that had questioned several initiatives and policies.\n" +
-                    "“During debates in Parliament after revocation of Article 370, the opposition used to say that there would be a bloodbath in the troubled state. We have not only stopped the spilling of blood but also incidents of stone pelting and protests. Over 1.8 crore tourists visited J&K last year,” Shah said at an event marking 50 years of Lokmat’s Nagpur edition.\n" +
-                    "Targeting Rahul Gandhi, the Union minister said Congress MP had sought removal of AFSPA (the 1958 law that gives special powers to soldiers during counter-insurgency/terrorism ops), “but we told him that until peace prevailed in the NE region, we will not do it”."),
-            News(R.drawable.img_21,"Can’t prosecute journalists for false reports","Calling an NGO’s complaint against three Editors Guild members a “counter-narrative of the government”, a CJI-led bench said the FIRs lodged against them did not “reveal even a whisper” of the offences alleged in the complaint.\n" +
-                    "The Meitei NGO, which had lodged the FIRs against the EGI members, opposed the journalists’ plea for revoking the FIRs alleging that the report was full of falsehoods propagated by the Kuki side, which deepened the ethnic divide and fuelled violence. The bench of\n" +
-                    "CJI DY Chandrachud and Justices JB Pardiwala and Manoj Misra said even if the report was false, journalists could not be prosecuted under Section 153A.\n" +
-                    "“Assuming that the EGI report is false, it is not an offence under Section 153A. There are falsehoods in articles published across the country every day, do we prosecute all journalists under Section 153A?” the CJI said. Section 153A penalises “promoting enmity between different groups on grounds of religion, race, place of birth, residence, language etc, and doing acts prejudicial to maintenance of harmony”.\n" +
-                    "The CJI also questioned how ingredients of Section 200 of IPC invoked against the EGI members in the FIR were made out from the NGO’s complaint. “How was the report a declaration to the court? How is an offence under Section 200 made out? Read your complaint,” he asked. Section 200 says “whoever corruptly uses or attempts to use as true any such declaration, knowing the same to be false in any material point, shall be punished in the same manner as if he gave false evidence”.\n" +
-                    "Solicitor general Tushar Mehta said, “The Manipur government is not concerned with all these. My only worry is any organisation now can put up a fact-finding committee, file a report and place it alongside the counter views and then come before the SC seeking quashing of the FIR. With this (kind of report), we may not be able to control the narrative-building by both sides.”\n" +
-                    "The CJI said, “The Army wrote to the EGI and complained of biased or one-sided reporting of the ethnic violence. The Army invited them. They went to the ground and submitted a report.”\n" +
-                    "During the hearing, EGI counsel Shyam Divan informed the SC about the Manipur HC chief justice entertaining a PIL against the EGI report and sending notices seeking response of the journalists on the plea for discarding the report. The bench ticked off the HC chief justice, saying, “The manner in which the PIL is entertained by the chief justice of Manipur HC, as head of the family... there are better cases to take up than these kinds of PILs.”\n" +
-                    "The bench asked the Meitei NGO’s counsel Guru Krishna Kumar to file its response to the EGI’s plea for quashing of the FIR after Divan repeatedly said that lodging of FIRs had a chilling effect on free speech of journalists.\n" +
-                    "He also flagged the Manipur CM holding a press conference to defend lodging of FIRs against the journalists. Kumar attempted to salvage the situation by suggesting that the NGO would withdraw the police complaint if the EGI withdrew its report. Divan said the EGI had put comments for and against the report alongside it in the same weblink for people to frame their views. The SC asked the NGO to file a response by Friday, when the matter will be taken up for further hearing."),
-            News(R.drawable.img_22,"  Why ‘pharmacy of the world’ is buying drugs for Nipah","Hailed as the “pharmacy of the world”, the booming pharmaceutical industry of India is a leading source of path-breaking innovation especially when it comes to providing life-saving medicines at affordable prices to countries that need them the most. Even during the COVID-19 pandemic, the world continued to depend on Indian vaccine and pharmaceutical manufacturers to get their supply of medications.\nAs per data, India exported 5.84 crore doses of COVID vaccines to 70 countries as of March 2021. With low-cost skilled manpower and a well-established manufacturing base, India is all set to play even a bigger role in worldwide drug security and continues to be one of the most favoured pharmaceutical markets in the worldWhat Led to India’s Emergence as the “Pharmacy of the World”?\n" +
-                    "Product patents on medicines were not granted in India before 2005. As a result, Indian pharmaceutical manufacturers were able to produce low-cost generic versions of drugs that had patents from other countries. With the help of reverse engineering, India was the first to bring to the market affordable versions of the HIV drugs (Zidovudine) and life-saving cancer (Imatinib) within a few years after their US launch."),
-            News(R.drawable.img_23," After malaria and dengue, a reference to potassium cyanide","Cases on concurrent infection of dengue and malaria are uncommon in Pakistan. Dengue and malaria are the two very common, mosquito-borne infections, which may have significant morbidity and mortality if not managed properly. Concurrent infections of dengue and malaria are rare due to the different habitats of its vectors and activities of different bearer mosquitoes. The first case was reported in 2005. Since then, several co-existing infections have been reported consisting of the dengue virus (DENV) and the malaria protozoans. Symptoms of each infection may be disguised by a coincident second infection, resulting in delayed treatment and severe complications. We report a case of concurrent malaria and dengue viral hemorrhagic fever in a 19-year-old male.Introduction\n" +
-                    "Several tropical vector-borne infections continue to cause a rising incidence of morbidity and mortality in resource-restricted nations. Two of those infections are: a parasitic disease malaria and a viral disease dengue. Malaria is caused by a female mosquito, Anopheles; while dengue is caused by Aedes aegypti mosquito. In the past, the presence of a co-infection in an individual is sporadically reported [1, 2]. Both of the diseases cause an acute pyrexial illness; however, only malaria can cause a chronic fever. Here, we present a case of a young male with overlapping symptoms and the challenging enigma of diagnosis to aware physicians in the endemic areas of Pakistan for the possibility of malaria and dengue co-infection.Case presentation\n" +
-                    "A 19-year-old male, a resident of Mirpur with no known co-morbidities, presented to the emergency department (ED) of Dr. Ruth KM Pfau, Civil Hospital Karachi (CHK) in September 2018 with a history of fever, dizziness, generalized weakness and bleeding of gums since the past three days. According to the patient, he suddenly developed a continuous fever of 102°F, which was sporadic in nature and associated with chills and rigors. The fever temporarily alleviated with intake of antipyretics. He also experienced occasional bleeding from gums and dizziness with generalized weakness, for which he sought symptomatic treatment from a local health care facility, but the symptoms worsened. Therefore, he was then referred to CHK. No history of bleeding from any other site, nor hematemesis or black tarry stools was present. The patient revealed a decreased appetite and past addiction to tobacco.\n" +
-                    "\n" +
-                    "On examination (O/E), the patient was of average height and built, comfortably lying on the bed, and well oriented to time, place and person. Initial vitals included blood pressure (BP) 120/70 mmHg, a regular pulse of 90 beats/min and a respiratory rate of 20 breaths/min. The patient was anemic and dehydrated. He had a soft, non-tender, non-distended abdomen without hepatosplenomegaly, and bowel sounds were audible with a rate of 3-4/min. All other systems were unremarkable.\n" +
-                    "\n" +
-                    "Blood investigations revealed a hemoglobin (Hb) of 4.5 gm/dl, mean corpuscular volume (MCV) of 108.5 fl, mean corpuscular hemoglobin concentration (MCHC) of 35.4 gm/dl, total leukocyte count (TLC) of 2.7 x 109 L, hematocrit (HCT) of 12.7%, platelet count (PLT) of 12 x 109/L. The clotting profile showed an international normalized ratio (INR) of 1.11, while prothrombin time (PT) and activated partial thromboplastin time (aPTT) were 11.1 and 21.7 seconds, respectively. The various lab investigations conducted, including those for hepatitis B surface antigen and hepatitis C antibody, both came out normal, as did his X-ray chest, renal and liver function tests, spot urine examination and ultrasound of the abdomen. The need for conducting specific investigations like hepatitis and chest X-ray were to exclude any other likely cause of the fever and presence of an infection. The electrolytes were within the normal range as well. Upon serology testing, dengue antigen came out to be reactive while that of dengue virus-specific antibodies, immunoglobulin M (IgM) and immunoglobulin G (IgG), were not reactive. Malarial parasite (MP) and MP immunochromatographic test (ICT) came out to be positive for Plasmodium (P) vivax with 7% reticulocytes (RET). Therefore, a diagnosis of concurrent malaria and dengue infection was established.\n" +
-                    "\n" +
-                    "The patient was treated with an oral combination of artemether and lumefantrine 80/480 twice daily for three days, along with oral acetaminophen two tablets if needed. Additionally, he was intravenously (IV) given tranexamic acid 5 mg when necessary and 1000 ml sodium chloride at the rate of 80 ml/hour. Two units of packed cells and six units of platelets were transfused alongside. Malaria and dengue were treated as separate entities with the above-mentioned treatment."),
-            News(R.drawable.img_24," A capability boost for IAF, Navy amid China-Pak threat","NEW DELHI: There is a shortage of more than 11,000 officers in the Indian Army, Air Force and Navy of which more than half are in the Army, officials in the Defence Ministry have said. According to the Defence Ministry, there is a shortage of officers of the rank of Major and Captain. At the same time, the Indian Air Force is short of important officers like the Squadron Leader and Flight Lieutenant. Similarly, there is a shortage of officers in the Indian Navy, including officers of the rank of Lieutenant Commander.\n" +
-                    "\n" +
-                    "Regarding these vacant posts, the Ministry of Defence says that there was low recruitment of officers during the Covid-19 pandemic. According to the Defence Ministry, due to the low recruitment of officers in the Covid-19 period, there has been a shortage of 11,266 Major and Captain and equivalent ranks and other rank officers in the Indian Air Force and the Navy alsoThe Ministry of Defence informed Parliament in writing that the posts of more than 6,800 officers are lying vacant in the Indian Army. The Army is short of 2,094 Major-level officers and 4,734 Captain-level officers. On the other hand, there is a shortage of 881 Squadron Leaders and 940 Flight Lieutenants in the Indian Air Force.\n" +
-                    "\n" +
-                    "The Navy has a shortfall of 2,617 officers of the rank of Lieutenant Commander and below ranks. According to Minister of State for Defence Ajay Bhatt, there was an impact on the appointment of officers in the Air Force, Navy and the Army during the pandemic period. Apart from this, the Ministry of Defence says that less recruitment in auxiliary cadres like 'Short Service Commission' (SSC) is also responsible for this shortage of officers. Significantly, the recruitment of officers in the defence forces is done through several mediums. One of them is through SSC, where cadets pass out after 11 months of training to become officers and serve in the defence forces for a fixed term of 10 to 14 years.The Defence Ministry says it is not looking at any alternative strategy like redeployment of officers to these posts to bridge the shortfall, but is looking to make 'short service' entry in the Army more attractive. However, one positive thing amid the vacancy in defence forces posts is that the Ministry of Defence has started the recruitment of women candidates in the National Defence Academy (NDA) from the year 2022. From the year 2022 till now, 57 women cadets have been recruited through NDA.\n" +
-                    "\n" +
-                    "Haryana leads in the number of NDA women cadets. According to the Defence Ministry, all the 57 vacancies of women cadets in NDA are fully subscribed. Of these, the maximum number of 19 female cadets are from Haryana followed by Uttar Pradesh (12). According to the Defence Ministry, three women cadets each have been recruited from Delhi, Jammu & Kashmir and Punjab and two each from Himachal Pradesh and Jammu & Kashmir. A total of four women cadets from Kerala were recruited in the Army through NDA, of which one has resigned"),
-            News(R.drawable.img_25," Gujarat gets a two-day election, results with Himachal","Election Results Live Updates:'We Have To Keep India First,' Says PM Modi After Gujarat Win, Congress Wrests Back Himachal\n" +
-                    "Election Results 2022: The BJP is eyeing a record seventh straight term in Gujarat\n" +
-                    "\n" +
-                    "\n" +
-                    "3\n" +
-                    "New Delhi: The Bharatiya Janata Party (BJP), set for a record seventh straight term in Gujarat, has announced swearing-in ceremony on Monday. The event will be attended by Prime Minister Narendra Modi. Leads show the BJP leading in 158 seats (up 59) in Prime Minister Narendra Modi's home state. With just under 20 seats, Congress is looking at its worst show ever. The Aam Aadmi Party, or AAP, which launched an aggressive campaign to make it a three-cornered contest for the first time in Gujarat, has made inroads in the western state, largely at Congress's expense. Three prominent AAP candidates, including its chief minister face Isudan Gadhvi, have lost their seat.\n" +
-                    "Himachal Pradesh, however, has proved to be a face-saver for Congress, which has taken a clear lead over the BJP after neck and neck contest after five hours of counting. The poll outcome in the hill state will decide the revival of the grand old party, which now holds power only in Rajasthan and Chhattisgarh, both of which will go to polls in 2023.\n" +
-                    "\n" +
-                    "In the by-elections in five states including the high-profile Lok Sabha seat of Samajwadi Party leader Mulayam Singh Yadav, the Samajwadi Party is leading in all three seats in Uttar Pradesh. Biju Janta Dal is leading in Padampur. "),
-            News(R.drawable.img_26,"Who is making water on the moon?","India's moon rover confirmed the presence of sulfur and detected several other elements near the lunar south pole as it searches for signs of frozen water nearly a week after its historic moon landing, the country's space agency said Tuesday. The rover's laser-induced spectroscope instrument also detected aluminum, iron, calcium, chromium, titanium, manganese, oxygen and silicon on the lunar surface, the Indian Space Research Organization, or ISRO, said in a post on its website.\n" +
-                    "The lunar rover had come down a ramp from the lander of India's spacecraft after last Wednesday's touchdown near the moon's south pole. The Chandrayan-3 Rover is expected to conduct experiments over 14 days, the ISRO has saidThe rover \"unambiguously confirms the presence of sulfur,\" ISRO said. It also is searching for signs of frozen water that could help future astronaut missions, as a potential source of drinking water or to make rocket fuel.\n" +
-                    "\n" +
-                    "The rover also will study the moon's atmosphere and seismic activity, ISRO Chairman S. Somnath said.\n" +
-                    "On Monday, the rover's route was reprogrammed when it came close to a 13-foot-wide crater. \"It's now safely heading on a new path,\" the ISRO said.\n" +
-                    "The craft moves at a slow speed of around one centimeter (half inch) per second to minimize shock and damage to the vehicle from the moon's rough terrain.\n" +
-                    "\n" +
-                    "After a failed attempt to land on the moon in 2019, India last week joined the United States, the Soviet Union and China as only the fourth country to achieve the milestone.\n" +
-                    "The successful mission showcases India's rising standing as a technology and space powerhouse and dovetails with the image that Prime Minister Narendra Modi is trying to project: an ascendant country asserting its place among the global elite.\n" +
-                    "\n"),
-            News(R.drawable.img_27,"A Chinese mystery over missing ministers","China’s defence minister has not been seen in almost three weeks, amid reports that he is under investigation, in the latest case of a senior Communist party official to disappear from public view.\n" +
-                    "Gen Li Shangfu was last seen on 29 August when he gave a speech to the China-Africa peace and security forum. His last overseas trip was to Moscow and Minsk in mid-August, where he met Russian officials on the sidelines of a security conference, and with the Belarusian president, Alexander Lukashenko.\n" +
-                    "Reuters reported on Friday that Li has been placed under investigation by Chinese authorities, citing 10 people familiar with the matter. The investigation into Li relates to procurement of military equipment, a regional security official and three people in direct contact with the Chinese military told the news agency.\n" +
-                    "Senior officials from the Chinese military’s procurement unit, which Li led from 2017 to 2022, were also under investigation, two of the people in contact with the military reportedly said. The investigation into Li, who was appointed as defence minister in March, and the eight officials, was being carried out by the military’s powerful disciplinary inspection commission, those two people said.A Chinese foreign ministry spokesperson told reporters on Friday that she was not aware of the situation. The state council and the defence ministry did not immediately return requests for comment. Li could not immediately be reached.\n" +
-                    "Earlier on Friday, the Financial Times reported that the US government believed Li had been put under investigation, citing senior officials.\n" +
-                    "\n" +
-                    "Reuters said Li cancelled a meeting with Vietnamese defence officials at the last minute last week. Two Vietnamese officials told the news agency that Beijing had postponed the annual meeting.Rahm Emanuel, the US ambassador to Japan, has been particularly vocal about the mystery, likening Xi Jinping’s cabinet to the Agatha Christie novel And Then There Were None.\n" +
-                    "On Friday, he posted on X/Twitter claiming Li had not appeared at a scheduled meeting with the Singaporean chief of navy because he was “placed under house arrest”. He did not provide a source for the claims.\n" +
-                    "Emanuel’s office and the Singaporean navy have been contacted for comment.\n" +
-                    "Li’s disappearance follows the surprise removal from his post in July of the Chinese foreign minister, Qin Gang, also after a weeks-long disappearance. There has been no further information or sign of him since.\n" +
-                    "Xi also replaced two top generals of the Rocket Force in early August, in a major shake-up of the military wing’s leadership. The former commander Li Yuchao had not been seen in public for weeks prior, and there was no explanation of his removal.\n" +
-                    "Since coming to power in 2013, Xi has run an extensive and unforgiving anti-corruption drive that analysts say also targeted political opponents. There has been a particular crackdown on corruption in the People’s Liberation Army (PLA).\n" +
-                    "But more than a decade into his rule, and after the greatest consolidation of power around a Chinese leader since Mao Zedong, senior ranks are now largely all Xi’s allies.\n" +
-                    "“It would be remarkable that in year 11 of Xi being in charge of the PLA there is still such high-level corruption, and for the Rocket Force officers and Li Shangfu, Xi can not blame his predecessors,” wrote the China analyst Bill Bishop on Friday.\n" +
-                    "Drew Thompson, a senior fellow at the Lee Kuan Yew School of Public Policy, said Li and Qin were the international community’s “gateway to an opaque system” and their disappearances were concerning.\n" +
-                    "“It’s kind of shocking that in three months China has disappeared both the foreign and defence ministers,” said Thompson, who is also a former US state department official.\n" +
-                    "“These are two critical foreign interlocutors but China feels no obligation to inform the international community how or why [the ministers have gone]. It reinforces how inward China has turned.”\n" +
-                    "Li was appointed defence minister in March, after a few months as the highest-ranked member of the central military commission, which oversees the armed forces. In 2018, as director of the military’s equipment development department he was sanctioned by the US over the PLA’s purchase of Russian military equipment.\n" +
-                    "Li’s biography and title remained online at the time of publication. After Qin’s removal, references to him as foreign minister were quickly scrubbed from Chinese internet sites, though some were later restored.\n" +
-                    "In China’s political system ministers are not the highest ranking in a particular portfolio. As defence minister, Li reports to two vice-chairs in the central military commission, who then report to Xi. However, he is also one of five state councillors, which ranks higher than a regular minister. Qin remains a state councillor."),
-            News(R.drawable.img_28,"Chandrayaan-1 data suggests electrons from Earth forming water on Moon","The Chandrayaan-1 mission detected hydroxyl molecules on the Moon's surface, which suggests that high energy electrons in the plasma sheet are indeed playing a role in the formation of water on the Moon.\n" +
-                    "\n" +
-                    "Earth's plasma sheet, which contains high energy electrons, is believed to play a significant role in weathering processes on the lunar surface. The magnetosphere, an area of space controlled by Earth's magnetic field, serves as a protective shield against space weathering and harmful solar radiation.\n" +
-                    "\n" +
-                    "The high energy electrons in Earth's plasma sheet is said to interact with the Moon's surface in a number of ways. For example, they can cause sputtering, which is the process of atoms being ejected from the surface of a solid material. They can also cause chemical reactions, which can lead to the formation of new molecules.\n" +
-                    "\n" +
-                    "One of the most important effects of high energy electrons on the Moon's surface is the formation of water. When high energy electrons interact with the Moon's rocks and soil, they can produce hydroxyl molecules (OH), which are the building blocks of water.\n" +
-                    "\n" +
-                    "Earlier, scientists mainly focused on the impact of high energy ions on the space weathering of the Moon and other airless bodies. Space weathering is the process by which the surfaces of airless bodies are modified by exposure to the space environment, including the solar wind, cosmic rays, and micrometeoroids.\n" +
-                    "\n" +
-                    "High energy ions can cause a variety of effects on the surfaces of airless bodies, including sputtering, implantation, and amorphization. Sputtering is the process of atoms being ejected from the surface of a solid material. Implantation is the process of atoms being embedded into the surface of a solid material. Amorphization is the process of a crystalline material being converted into a non-crystalline material.\n" +
-                    "\n" +
-                    "The solar wind is a continuous stream of charged particles that flows from the Sun. The solar wind contains a variety of high energy ions, including protons, alpha particles, and heavier ions.\n" +
-                    "\n" +
-                    "The solar wind was thought to be one of the primary mechanisms for water formation on the Moon. \n" +
-                    "However, Li's research suggests that there may be additional processes or sources of water not directly associated with the implantation of solar wind protons.\n" +
-                    "\n" +
-                    "\"To my surprise, the remote sensing observations showed that the water formation in Earth’s magnetotail is almost identical to the time when the Moon was outside of the Earth’s magnetotail,\" Li said.\n" +
-                    "\n" +
-                    "\"This indicates that, in the magnetotail, there may be additional formation processes or new sources of water not directly associated with the implantation of solar wind protons. In particular, radiation by high energy electrons exhibits similar effects as the solar wind protons,” Li added.\n" +
-                    "\n" +
-                    "The recent revelations by Li and her earlier findings on the rusting of iron in the Moon's polar regions due to oxygen in Earth's magnetotail brings out the hidden and unrecognised connections between Earth and its Moon.Li also looks to research more via the Nasa's Artemis programs, for monitoring the plasma environment and water content on the lunar polar surface as the Moon traverses different phases of Earth's magnetotail.")
+        val retrofitBuilder = Retrofit.Builder()
+            .baseUrl("https://newsapi.org/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(NewsApiService::class.java)
 
-        )
 
-        val adapter = RVAdapternational(news_data)
-        recyclerView.adapter = adapter
+        val country = "in"
+        val category = ""
+        val apiKey = "1b35d9408dba4c4389c5339b9416ac42"
+
+        val retrofitData = retrofitBuilder.getnewsdata(country,category,apiKey)
+
+        retrofitData.enqueue(object : Callback<MyData?> {
+            override fun onResponse(call: Call<MyData?>, response: Response<MyData?>) {
+                var responseBody = response.body()
+                var newsList = responseBody?.articles!!
+                recyclerView.layoutManager = LinearLayoutManager(this@National)
+                var allAdapter = RVAdaptermedia(newsList)
+                recyclerView.adapter = allAdapter
+
+            }
+
+            override fun onFailure(call: Call<MyData?>, t: Throwable) {
+                //api call fails
+                Log.d("Main Activity","on failure"+t.message)
+            }
+        })
     }
 }

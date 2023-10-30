@@ -7,9 +7,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
-class RVAdapternational(val newslist: List<News>): RecyclerView.Adapter<RVAdapternational.RVViewHolder>() {
-    inner class RVViewHolder(itemView : View):RecyclerView.ViewHolder(itemView)
+class RVAdapternational(val newslist: List<Article>): RecyclerView.Adapter<RVAdapternational.RVViewHolder>() {
+    inner class RVViewHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
+        var title: TextView
+        var image: ImageView
+
+        init {
+            title = itemView.findViewById(R.id.text)
+            image = itemView.findViewById(R.id.image)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RVViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view,parent,false)
@@ -21,22 +30,17 @@ class RVAdapternational(val newslist: List<News>): RecyclerView.Adapter<RVAdapte
     }
 
     override fun onBindViewHolder(holder: RVViewHolder, position: Int) {
-        holder.itemView.apply{
-            val text = findViewById<TextView>(R.id.text)
-            val image = findViewById<ImageView>(R.id.image)
-
-
-            text.text = newslist[position].title
-            image.setImageResource(newslist[position].image)
-            this.setOnClickListener {
-                val intent = Intent(context, FullNews::class.java)
-
-                intent.putExtra("title", newslist[position].title)
-                intent.putExtra("content", newslist[position].content)
-                intent.putExtra("image", newslist[position].image)
-
-                context.startActivity(intent)
-            }
-        }
+        val currentItem = newslist[position]
+        holder.title.text= currentItem.title
+        Picasso.get().load(currentItem.urlToImage).into(holder.image);
+//            this.setOnClickListener {
+//                val intent = Intent(context, FullNews::class.java)
+//
+//                intent.putExtra("title", newslist[position].title)
+//                intent.putExtra("content", newslist[position].content)
+//                intent.putExtra("image", newslist[position].image)
+//
+//                context.startActivity(intent)
+//            }
     }
 }
