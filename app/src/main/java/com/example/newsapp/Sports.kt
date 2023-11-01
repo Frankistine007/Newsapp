@@ -27,7 +27,7 @@ class Sports : AppCompatActivity() {
             .create(NewsApiService::class.java)
 
 
-        val country = ""
+        val country = "in"
         val category = "sports"
         val apiKey = "1b35d9408dba4c4389c5339b9416ac42"
 
@@ -38,7 +38,7 @@ class Sports : AppCompatActivity() {
                 var responseBody = response.body()
                 var newsList = responseBody?.articles!!
                 recyclerView.layoutManager = LinearLayoutManager(this@Sports)
-                var sportsAdapter = RVAdaptersports(this@Sports,newsList)
+                var sportsAdapter = RVAdapterall(this@Sports,newsList)
                 recyclerView.adapter = sportsAdapter
 
             }

@@ -27,7 +27,7 @@ class Politics: AppCompatActivity()  {
             .create(NewsApiService::class.java)
 
 
-        val country = ""
+        val country = "in"
         val category = "politics"
         val apiKey = "1b35d9408dba4c4389c5339b9416ac42"
 
@@ -38,7 +38,7 @@ class Politics: AppCompatActivity()  {
                 var responseBody = response.body()
                 var newsList = responseBody?.articles!!
                 recyclerView.layoutManager = LinearLayoutManager(this@Politics)
-                var allAdapter = RVAdapterall(newsList)
+                var allAdapter = RVAdapterall(this@Politics,newsList)
                 recyclerView.adapter = allAdapter
 
             }

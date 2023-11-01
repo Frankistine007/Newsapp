@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         val bsports = findViewById<Button>(R.id.bsports)
         val bmedia = findViewById<Button>(R.id.bmedia)
         val bnational = findViewById<Button>(R.id.bnational)
-        val binternational = findViewById<Button>(R.id.binternational)
+        val binternational = findViewById<Button>(R.id.bbusiness)
         val bpolitics = findViewById<Button>(R.id.bpolitics)
         val ball = findViewById<Button>(R.id.ball)
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binternational.setOnClickListener {
-            val intent = Intent(this,International::class.java)
+            val intent = Intent(this,Business::class.java)
             startActivity(intent)
         }
         bpolitics.setOnClickListener {

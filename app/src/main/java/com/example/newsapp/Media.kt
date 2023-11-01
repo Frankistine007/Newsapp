@@ -28,7 +28,7 @@ class Media : AppCompatActivity() {
             .create(NewsApiService::class.java)
 
 
-        val country = ""
+        val country = "in"
         val category = "entertainment"
         val apiKey = "1b35d9408dba4c4389c5339b9416ac42"
 
@@ -39,7 +39,7 @@ class Media : AppCompatActivity() {
                 var responseBody = response.body()
                 var newsList = responseBody?.articles!!
                 recyclerView.layoutManager = LinearLayoutManager(this@Media)
-                var allAdapter = RVAdaptermedia(newsList)
+                var allAdapter = RVAdapterall(this@Media,newsList)
                 recyclerView.adapter = allAdapter
 
             }

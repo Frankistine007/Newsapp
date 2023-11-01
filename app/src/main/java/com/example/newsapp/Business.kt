@@ -5,10 +5,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import retrofit2.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class All: AppCompatActivity() {
+class Business: AppCompatActivity()  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +27,8 @@ class All: AppCompatActivity() {
             .create(NewsApiService::class.java)
 
 
-        val country = ""
-        val category = ""
+        val country = "in"
+        val category = "business"
         val apiKey = "1b35d9408dba4c4389c5339b9416ac42"
 
         val retrofitData = retrofitBuilder.getnewsdata(country,category,apiKey)
@@ -34,9 +37,9 @@ class All: AppCompatActivity() {
             override fun onResponse(call: Call<MyData?>, response: Response<MyData?>) {
                 var responseBody = response.body()
                 var newsList = responseBody?.articles!!
-                recyclerView.layoutManager = LinearLayoutManager(this@All)
-                var allAdapter = RVAdapterall(newsList)
-                recyclerView.adapter = allAdapter
+                recyclerView.layoutManager = LinearLayoutManager(this@Business)
+                var businessAdapter = RVAdapterall(this@Business,newsList)
+                recyclerView.adapter = businessAdapter
 
             }
 

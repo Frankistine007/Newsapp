@@ -38,7 +38,7 @@ class National : AppCompatActivity() {
                 var responseBody = response.body()
                 var newsList = responseBody?.articles!!
                 recyclerView.layoutManager = LinearLayoutManager(this@National)
-                var allAdapter = RVAdaptermedia(newsList)
+                var allAdapter = RVAdapterall(this@National,newsList)
                 recyclerView.adapter = allAdapter
 
             }

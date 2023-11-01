@@ -19,37 +19,58 @@
     </ImageView>
 
     <TextView
-    android:id="@+id/title"
-    android:layout_width="0sp"
-    android:layout_height="30dp"
-    android:layout_marginTop="12dp"
-    android:textStyle="bold"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.555"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/img" />
+        android:id="@+id/title"
+        android:layout_width="0sp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:layout_marginTop="12dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img" />
+
+    <TextView
+        android:id="@+id/url"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvtext"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/tvtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="46dp"
+        android:text="Link to full news:"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        tools:context=".flcontent">
+        app:layout_constraintTop_toBottomOf="@+id/url"
+        tools:context=".flcontent"
+        tools:layout_editor_absoluteX="-54dp">
 
-        <LinearLayout
+
+        <TextView
+            android:id="@+id/content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:scrollbars="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                tools:layout_editor_absoluteX="5dp" />
-        </LinearLayout>
+            android:layout_height="266dp"
+            android:layout_marginTop="12dp"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:layout_editor_absoluteX="5dp" />
     </ScrollView>
 
 
