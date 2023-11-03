@@ -16,6 +16,7 @@ class RVAdapterall(val context: Context,val newslist: List<Article>): RecyclerVi
         var image: ImageView
         var content: TextView
 
+
         init {
             title = itemView.findViewById(R.id.text)
             image = itemView.findViewById(R.id.image)
@@ -43,6 +44,7 @@ class RVAdapterall(val context: Context,val newslist: List<Article>): RecyclerVi
             intent.putExtra("title", currentItem.title)
             intent.putExtra("content", currentItem.content)
             intent.putExtra("image", currentItem.urlToImage)
+            intent.putExtra("url", currentItem.url)
 
             context.startActivity(intent)
         }
