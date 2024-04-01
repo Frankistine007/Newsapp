@@ -6,12 +6,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 
 class FullNews : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_news)
@@ -19,7 +20,7 @@ class FullNews : AppCompatActivity() {
         val tittv = findViewById<TextView>(R.id.title)
         val contv = findViewById<TextView>(R.id.content)
         val urltv = findViewById<TextView>(R.id.url)
-
+        val backbtn = findViewById<ImageButton>(R.id.backbtn)
 
         val title = intent.getStringExtra("title")
         val image = intent.getStringExtra("image")
@@ -35,6 +36,10 @@ class FullNews : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
             startActivity(intent)
+        }
+
+        backbtn.setOnClickListener {
+            finish()
         }
 
     }

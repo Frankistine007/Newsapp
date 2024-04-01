@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 
 
 class MainActivity : AppCompatActivity() {
@@ -11,12 +12,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bsports = findViewById<Button>(R.id.bsports)
-        val bmedia = findViewById<Button>(R.id.bmedia)
-        val bnational = findViewById<Button>(R.id.bnational)
-        val binternational = findViewById<Button>(R.id.bbusiness)
-        val bpolitics = findViewById<Button>(R.id.bpolitics)
-        val ball = findViewById<Button>(R.id.ball)
+        val bsports = findViewById<ImageButton>(R.id.bsports)
+        val bmedia = findViewById<ImageButton>(R.id.bmedia)
+        val bnational = findViewById<ImageButton>(R.id.bnational)
+        val binternational = findViewById<ImageButton>(R.id.bbusiness)
+        val bpolitics = findViewById<ImageButton>(R.id.bpolitics)
+        val ball = findViewById<ImageButton>(R.id.ball)
 
         bsports.setOnClickListener {
 
